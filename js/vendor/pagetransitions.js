@@ -44,6 +44,7 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 		if(setD)
 		{
 			setDots();
+			specElems(0);
 		}
 
 	}
@@ -57,6 +58,7 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 		}
 		$dotcont.append(dotsStr);
 		$('.slider-dot').first().addClass('active-dot');
+		$('.slider-dots').css('margin-top', -$('.slider-dots').height()/2 );
 	}
 
 	function next() {
@@ -97,6 +99,12 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 
 		if( isAnimating ) {
 			return false;
+		}
+
+		if( setD )
+		{
+			specElems(slideid);
+			specElemsHide();
 		}
 
 		if( setA ) {
@@ -380,7 +388,6 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 				break;
 
 			current = slideid;
-			console.log(current);
 
 		}
 
@@ -406,6 +413,7 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			$('.slider-dot').eq(slideid).addClass('active-dot');
 		}
 
+
 		if( !support ) {
 			onEndAnimation( $currPage, $nextPage );
 		}
@@ -424,14 +432,31 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' ' + activeClass );
 	}
 
+	function specElems(id) {
+		var elem = $pages.eq(id).data('elem');
+		switch( elem ) {
+			case 'people-around':
+				$('.people-elems div').addClass('elem-active');
+				break;
+		}
+	}
+	function specElemsHide() {
+		var elem = $('.' + activeClass).data('elem');
+		switch( elem ) {
+			case 'people-around':
+				$('.people-elems div').removeClass('elem-active');
+				break;
+		}
+	}
+
 	init();
-	
+
 	return { init : init, next: next, prev: prev, clickShow: clickShow };
 };
 
-var animSlider = PageTransitions(48, 49, $('.pt-perspective .pt-page'), 'pt-page-current', true, false);
-var animPrjDesc = PageTransitions(51, 50, $('.prj-desc'), 'prj-desc-active', false, false);
-var animPrjName = PageTransitions(51, 50, $('.prj-name'), 'prj-name-active', false, true);
+var animSlider = PageTransitions(64, 65, $('.slider-item'), 'slider-item-active', true, false);
+var animPrjDesc = PageTransitions(1, 2, $('.prj-desc'), 'prj-desc-active', false, false);
+var animPrjName = PageTransitions(60, 61, $('.prj-name'), 'prj-name-active', false, true);
 
 $('.slideshow').on('click', '.slider-dot', function(){
 	var that = $(this);
