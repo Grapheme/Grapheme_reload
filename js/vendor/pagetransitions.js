@@ -425,7 +425,7 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 	}
 
 	init();
-
+	
 	return { init : init, next: next, prev: prev, clickShow: clickShow };
 };
 
