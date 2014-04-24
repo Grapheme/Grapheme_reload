@@ -402,8 +402,29 @@ nav {
 
 /* Main styles */
 .slideshow {
+    position: relative;
 	height: 590rem / @htmlFontSize;
-	background: #eee;
+    overflow: hidden;
+
+    .slider-dots {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        z-index: 2;
+
+        .slider-dot {
+            width: 12rem / @htmlFontSize;
+            height: 12rem / @htmlFontSize;
+            border-radius: 12rem / @htmlFontSize;
+            background: #2465a4;
+            margin: 5rem / @htmlFontSize 0;
+            cursor: pointer;
+
+            &.active-dot {
+                background: #a7c1db;
+            }
+        }
+    }
 }
 /* Footer styles */
 

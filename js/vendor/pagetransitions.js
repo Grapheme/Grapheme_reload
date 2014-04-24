@@ -1,7 +1,8 @@
-var PageTransitions = (function() {
+var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, setA) {
 
-	var $main = $( '#pt-main' ),
-		$pages = $main.children( 'div.pt-page' ),
+	var $dotcont = $('.slider-dots'),
+		$dotClass = 'slider-dot',
+		$dot = '<div class="' + $dotClass + '"></div>';
 		$iterate = $( '#iterateEffects' ),
 		animcursor = 1,
 		pagesCount = $pages.length,
@@ -27,7 +28,7 @@ var PageTransitions = (function() {
 			$page.data( 'originalClassList', $page.attr( 'class' ) );
 		} );
 
-		$pages.eq( current ).addClass( 'pt-page-current' );
+		$pages.eq( current ).addClass( activeClass );
 
 		$iterate.on( 'click', function() {
 			if( isAnimating ) {
@@ -40,26 +41,71 @@ var PageTransitions = (function() {
 			++animcursor;
 		} );
 
+		if(setD)
+		{
+			setDots();
+		}
+
 	}
 
-	function nextPage( animation ) {
+	function setDots() {
+		var i;
+		var dotsStr = "";
+		for(i = 0; i < pagesCount; i++)
+		{
+			dotsStr += $dot;
+		}
+		$dotcont.append(dotsStr);
+		$('.slider-dot').first().addClass('active-dot');
+	}
+
+	function next() {
+		var activeIndex = $('.' + activeClass).index();
+
+		if( activeIndex != pagesCount - 1 ) {
+			showPage( nextAnim, activeIndex + 1 );
+		} else {
+			showPage( nextAnim, 0 );
+		}
+	}
+
+	function prev() {
+		var activeIndex = $('.' + activeClass).index();
+
+		if( activeIndex != 0 ) {
+			showPage( prevAnim, activeIndex - 1 );
+		} else {
+			showPage( prevAnim, pagesCount - 1 );
+		}
+	}
+
+	function clickShow(id) {
+		var currId = $('.' + activeClass).index();
+		console.log('id:' + id + ', active: ' + currId);
+		
+		if( currId != id )
+		{
+			if( currId > id) {
+				showPage( prevAnim, id );
+			} else {
+				showPage( nextAnim, id );
+			}
+		}
+	}
+
+	function showPage( animation, slideid ) {
 
 		if( isAnimating ) {
 			return false;
 		}
 
-		isAnimating = true;
+		if( setA ) {
+			isAnimating = true;
+		}
 		
-		var $currPage = $pages.eq( current );
+		var $currPage = $('.' + activeClass);
 
-		if( current < pagesCount - 1 ) {
-			++current;
-		}
-		else {
-			current = 0;
-		}
-
-		var $nextPage = $pages.eq( current ).addClass( 'pt-page-current' ),
+		var $nextPage = $pages.eq( slideid ).addClass( activeClass ),
 			outClass = '', inClass = '';
 
 		switch( animation ) {
@@ -333,12 +379,15 @@ var PageTransitions = (function() {
 				inClass = 'pt-page-rotateSlideIn';
 				break;
 
+			current = slideid;
+			console.log(current);
+
 		}
 
 		$currPage.addClass( outClass ).on( animEndEventName, function() {
 			$currPage.off( animEndEventName );
 			endCurrPage = true;
-			if( endNextPage ) {
+			if( endNextPage || setA ) {
 				onEndAnimation( $currPage, $nextPage );
 			}
 		} );
@@ -346,10 +395,16 @@ var PageTransitions = (function() {
 		$nextPage.addClass( inClass ).on( animEndEventName, function() {
 			$nextPage.off( animEndEventName );
 			endNextPage = true;
-			if( endCurrPage ) {
+			if( endCurrPage || setA ) {
 				onEndAnimation( $currPage, $nextPage );
 			}
 		} );
+
+		if(setD)
+		{
+			$('.slider-dot.active-dot').removeClass('active-dot');
+			$('.slider-dot').eq(slideid).addClass('active-dot');
+		}
 
 		if( !support ) {
 			onEndAnimation( $currPage, $nextPage );
@@ -366,11 +421,21 @@ var PageTransitions = (function() {
 
 	function resetPage( $outpage, $inpage ) {
 		$outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
-		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
+		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' ' + activeClass );
 	}
 
 	init();
+	
+	return { init : init, next: next, prev: prev, clickShow: clickShow };
+};
 
-	return { init : init, next : nextPage };
+var animSlider = PageTransitions(48, 49, $('.pt-perspective .pt-page'), 'pt-page-current', true, false);
+var animPrjDesc = PageTransitions(51, 50, $('.prj-desc'), 'prj-desc-active', false, false);
+var animPrjName = PageTransitions(51, 50, $('.prj-name'), 'prj-name-active', false, true);
 
-})();
+$('.slideshow').on('click', '.slider-dot', function(){
+	var that = $(this);
+	animSlider.clickShow(that.index());
+	animPrjDesc.clickShow(that.index());
+	animPrjName.clickShow(that.index());
+});
