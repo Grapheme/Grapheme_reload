@@ -189,6 +189,24 @@ a {
         padding: 15% 0 0;
     }
 }
+.full {
+    &.col {
+        margin: 0;
+    }
+    &.col-1 {
+        width: 33.333333%;
+    }
+    &.col-2 {
+        width: 66.666666%;
+    }
+    &.col-3 {
+        width: 99.999999%;
+    }
+}
+.col-cont {
+    .border-box;
+    height: 360rem / @htmlFontSize;
+}
 
 /* Prj */
 .prj {    
@@ -413,6 +431,87 @@ nav {
             }
         }
     }    
+}
+/* ==========================================================================
+   Projects classes
+   ========================================================================== */
+.people-around-prj {
+    position: relative;
+    margin: 47rem / @htmlFontSize 0 100rem / @htmlFontSize;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 137rem / @htmlFontSize;
+        left: 35rem / @htmlFontSize;
+        width: 235rem / @htmlFontSize;
+        height: 561rem / @htmlFontSize;
+
+        background: url(../img/people-around/andrew.png) no-repeat 0 0 e('/') 100% 100%;
+    }
+
+    .prj-desc {
+        background: @mainColor;
+        color: #fff;
+        h2 {
+            margin: 0 0 20rem / @htmlFontSize;
+            line-height: 1em;
+            font-size: 34em / @htmlFontSize;
+        }
+        .desc {
+            .light;
+            font-size: 15em / @htmlFontSize;
+        }
+    }
+    .prj-more-desc {
+        padding: 5rem 29rem / @htmlFontSize 0 38rem / @htmlFontSize;
+    }
+    .prj-logo {
+        background: url(../img/people-around/banner.jpg) no-repeat 0 0 e('/') 100% 100%;
+    }
+    .prj-screen {
+        background: url(../img/people-around/screen.jpg) no-repeat 0 0 e('/') 100% 100%;
+    }
+    .sec-logo {
+        margin: 0 0 3rem;
+        text-align: center;
+    }
+    .sec-desc {
+        font-size: 15em / @htmlFontSize;
+    }
+}
+
+.mdp-event-prj {
+    .col-2 {
+        background: #f3f3f3;
+    }
+    .prj-desc {
+        background: @mainColor;
+        color: #fff;
+        h2 {
+            margin: 0 0 20rem / @htmlFontSize;
+            line-height: 1em;
+            font-size: 34em / @htmlFontSize;
+        }
+        &.col-cont {
+            position: relative;
+            padding-top: 257rem / @htmlFontSize;
+        }
+        .desc {
+            .light;
+            font-size: 15em / @htmlFontSize;
+        }
+    }    
+    .prj-more-desc {
+        padding: 0 29rem / @htmlFontSize 0 38rem / @htmlFontSize;
+
+        .sec-logo {
+            margin: 0 0 43rem / @htmlFontSize;
+        }        
+        .sec-desc {
+            font-size: 15em / @htmlFontSize;
+        }
+    }
 }
 
 /* ==========================================================================
