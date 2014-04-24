@@ -130,6 +130,9 @@ a {
 .uppercase {
 	text-transform: uppercase;
 }
+.overflow-h {
+    overflow: hidden;
+} 
 
 /* Font weights */
 .light() {
@@ -284,6 +287,8 @@ body {
 
 /* Header styles */
 header {
+    position: relative;
+    z-index: 3;
 	background: @mainColor;
 	height: 3.5rem; /* 56px */
 
@@ -404,20 +409,19 @@ nav {
 .slideshow {
     position: relative;
 	height: 590rem / @htmlFontSize;
-    overflow: hidden;
 
     .slider-dots {
         position: absolute;
-        right: 0;
+        right: 20rem / @htmlFontSize;
         top: 50%;
-        z-index: 2;
+        z-index: 3;
 
         .slider-dot {
-            width: 12rem / @htmlFontSize;
-            height: 12rem / @htmlFontSize;
-            border-radius: 12rem / @htmlFontSize;
+            width: 10rem / @htmlFontSize;
+            height: 10rem / @htmlFontSize;
+            border-radius: 10rem / @htmlFontSize;
             background: #2465a4;
-            margin: 5rem / @htmlFontSize 0;
+            margin: 20rem / @htmlFontSize 0;
             cursor: pointer;
 
             &.active-dot {
@@ -425,7 +429,88 @@ nav {
             }
         }
     }
+
+    .slider-cont {
+        position: absolute;
+        top: 50%;
+        text-align: center;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .slider-title {
+        color: #15497b;
+        font-size: 82rem / @htmlFontSize;
+        margin: -(112rem/@htmlFontSize)/2 0 0 0;
+        .light;
+    }
+
+    .slider-btn {
+        display: inline-block;
+        border: 1px solid #071424;
+        padding: 10px 20px;
+        color: #071424;
+        font-size: 17rem / @htmlFontSize;
+        margin: 40rem / @htmlFontSize 0 0;
+        .light;
+    }
+
+    .slider-elem {
+        position: absolute;
+        z-index: -1;
+
+        &.people-andrew {
+            width: 184rem / @htmlFontSize;
+            height: 416rem / @htmlFontSize;
+            background-image: url(../img/slideshow/people_around_2.jpg);
+            background-size: 100% 100%;
+            right: 100rem / @htmlFontSize;
+            top: 50rem / @htmlFontSize;
+            opacity: 0;
+            -webkit-transform: translateY(-110%);
+            transform: translateY(-110%);
+            -webkit-transition: all 1s ease;
+            transition: all 1s ease;
+
+            &.elem-active {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        &.people-lena {
+            width: 264rem / @htmlFontSize;
+            height: 716rem / @htmlFontSize;
+            background-image: url(../img/slideshow/people_around_1.jpg);
+            background-size: 100% 100%;
+            left: 0;
+            top: 50rem / @htmlFontSize;
+            opacity: 0;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            -webkit-transition: all 1s ease;
+            transition: all 1s ease;
+
+            &.elem-active {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .mdp-item {
+        background: url(../img/slideshow/mdp.jpg);
+        background-size: cover;
+    }
 }
+
+.prj-list {
+    position: relative;
+    z-index: 3;
+}
+
 /* Footer styles */
 
 .footer {
