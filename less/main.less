@@ -431,6 +431,10 @@ nav {
 
             &.active-dot {
                 background: #a7c1db;
+                -webkit-transform: rotate3d(1, 0, 0, 180deg);
+                transform: rotate3d(1, 0, 0, 180deg);
+
+                .elem-transition;
             }
         }
     }
@@ -549,6 +553,7 @@ nav {
             width: 315rem / @htmlFontSize;
             height: 317rem / @htmlFontSize;
             background: url(../img/slideshow/qoobroom_left.png);
+            background-size: 100% 100%;
             left: 35rem / @htmlFontSize;
             top: 50%;
             margin-top: -158rem / @htmlFontSize;
@@ -570,6 +575,7 @@ nav {
             width: 674rem / @htmlFontSize;
             height: 675rem / @htmlFontSize;
             background: url(../img/slideshow/qoobroom_center.png);
+            background-size: 100% 100%;
             left: 50%;
             top: 50%;
             margin-left: -337rem / @htmlFontSize;
@@ -592,6 +598,7 @@ nav {
             width: 350rem / @htmlFontSize;
             height: 351rem / @htmlFontSize;
             background: url(../img/slideshow/qoobroom_right.png);
+            background-size: 100% 100%;
             right: 35rem / @htmlFontSize;
             top: 50%;
             margin-top: -175rem / @htmlFontSize;
