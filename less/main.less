@@ -779,11 +779,22 @@ nav {
         background: url(../img/dah-sl/banner.jpg) no-repeat center center e('/') cover;
     }
     .prj-more-desc {
-        padding: 15rem 29rem / @htmlFontSize 0 38rem / @htmlFontSize;
+        position: relative;
+        padding: 4rem 29rem / @htmlFontSize 0 38rem / @htmlFontSize;
         background: #fff;
         .sec-desc {
             .light;
             font-size: 15em / @htmlFontSize;
+        }
+        &:before {
+            content:"";
+            position: absolute;
+            bottom: 0;
+            left: 48%;
+            width: 141rem / @htmlFontSize;
+            height: 157rem / @htmlFontSize;
+
+            background: url(../img/dah-sl/dire.png) no-repeat 0 0 e('/') 100% 100%;
         }
     }
     .prj-desc {
