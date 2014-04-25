@@ -160,6 +160,11 @@ a {
 	transition: @elem @eff @time;
 }
 
+.elem-transition {
+    -webkit-transition: all .8s ease;
+            transition: all .8s ease;
+}
+
 /* Grid */
 .row {
     .border-box;
@@ -455,6 +460,16 @@ nav {
         .light;
     }
 
+    [data-elem=qoobroom] {
+        .slider-title {
+            color: #fff;
+        }
+        .slider-btn {
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+
     .slider-elem {
         position: absolute;
         z-index: -1;
@@ -469,8 +484,8 @@ nav {
             opacity: 0;
             -webkit-transform: translateY(-110%);
             transform: translateY(-110%);
-            -webkit-transition: all 1s ease;
-            transition: all 1s ease;
+            
+            .elem-transition;
 
             &.elem-active {
                 opacity: 1;
@@ -489,8 +504,8 @@ nav {
             opacity: 0;
             -webkit-transform: translateY(100%);
             transform: translateY(100%);
-            -webkit-transition: all 1s ease;
-            transition: all 1s ease;
+            
+            .elem-transition;
 
             &.elem-active {
                 opacity: 1;
@@ -500,9 +515,98 @@ nav {
         }
     }
 
-    .mdp-item {
+    .mdp-elem {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        top: -10%;
+        left: 0;
+        width: 100%;
+        height: 120%;
         background: url(../img/slideshow/mdp.jpg);
         background-size: cover;
+        -webkit-transform: scale(.8, .8);
+                transform: scale(.8, .8);
+        
+        .elem-transition;
+
+        &.elem-active {
+            opacity: 1;
+            -webkit-transform: scale(1, 1);
+                    transform: scale(1, 1);
+        }
+    }
+
+    .qoobroom-elems {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        .qoobroom-left {
+            position: absolute;
+            width: 315rem / @htmlFontSize;
+            height: 317rem / @htmlFontSize;
+            background: url(../img/slideshow/qoobroom_left.png);
+            left: 35rem / @htmlFontSize;
+            top: 50%;
+            margin-top: -158rem / @htmlFontSize;
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            opacity: 0;
+
+            .elem-transition;
+
+            &.elem-active {
+                opacity: 1;
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+
+        .qoobroom-center {
+            position: absolute;
+            width: 674rem / @htmlFontSize;
+            height: 675rem / @htmlFontSize;
+            background: url(../img/slideshow/qoobroom_center.png);
+            left: 50%;
+            top: 50%;
+            margin-left: -337rem / @htmlFontSize;
+            margin-top: -337rem / @htmlFontSize;
+            -webkit-transform: scale(.8, .8);
+            transform: scale(.8, .8);
+            opacity: 0;
+
+            .elem-transition;
+
+            &.elem-active {
+                opacity: 1;
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+        }
+
+        .qoobroom-right {
+            position: absolute;
+            width: 350rem / @htmlFontSize;
+            height: 351rem / @htmlFontSize;
+            background: url(../img/slideshow/qoobroom_right.png);
+            right: 35rem / @htmlFontSize;
+            top: 50%;
+            margin-top: -175rem / @htmlFontSize;
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            opacity: 0;
+
+            .elem-transition;
+
+            &.elem-active {
+                opacity: 1;
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
     }
 }
 

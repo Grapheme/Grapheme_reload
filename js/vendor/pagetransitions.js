@@ -1,3 +1,8 @@
+var clickAllow = true,
+	autoplay = true,
+	autoplayTime = 5000,
+	runInterval = true;
+
 var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, setA) {
 
 	var $dotcont = $('.slider-dots'),
@@ -41,12 +46,10 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			++animcursor;
 		} );
 
-		if(setD)
-		{
+		if(setD) {
 			setDots();
 			specElems(0);
 		}
-
 	}
 
 	function setDots() {
@@ -82,8 +85,8 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 	}
 
 	function clickShow(id) {
+		console.log(clickAllow);
 		var currId = $('.' + activeClass).index();
-		console.log('id:' + id + ', active: ' + currId);
 		
 		if( currId != id )
 		{
@@ -100,15 +103,14 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 		if( isAnimating ) {
 			return false;
 		}
-
-		if( setD )
-		{
+		if( setD ) {
 			specElems(slideid);
 			specElemsHide();
 		}
-
 		if( setA ) {
 			isAnimating = true;
+		} else {
+			clickAllow = false;
 		}
 		
 		var $currPage = $('.' + activeClass);
@@ -395,7 +397,7 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			$currPage.off( animEndEventName );
 			endCurrPage = true;
 			if( endNextPage || setA ) {
-				onEndAnimation( $currPage, $nextPage );
+				onEndAnimation( $currPage, $nextPage, setA );
 			}
 		} );
 
@@ -403,7 +405,7 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			$nextPage.off( animEndEventName );
 			endNextPage = true;
 			if( endCurrPage || setA ) {
-				onEndAnimation( $currPage, $nextPage );
+				onEndAnimation( $currPage, $nextPage, setA );
 			}
 		} );
 
@@ -413,18 +415,21 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			$('.slider-dot').eq(slideid).addClass('active-dot');
 		}
 
-
 		if( !support ) {
-			onEndAnimation( $currPage, $nextPage );
+			onEndAnimation( $currPage, $nextPage, setA );
 		}
-
 	}
 
-	function onEndAnimation( $outpage, $inpage ) {
+	function onEndAnimation( $outpage, $inpage, setA ) {
 		endCurrPage = false;
 		endNextPage = false;
 		resetPage( $outpage, $inpage );
 		isAnimating = false;
+		if(setA) {
+			setTimeout(function(){
+				clickAllow = true;
+			}, 250);
+		}
 	}
 
 	function resetPage( $outpage, $inpage ) {
@@ -438,6 +443,12 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			case 'people-around':
 				$('.people-elems div').addClass('elem-active');
 				break;
+			case 'mdp':
+				$('.mdp-elem').addClass('elem-active');
+				break;
+			case 'qoobroom':
+				$('.qoobroom-elems div').addClass('elem-active');
+				break;
 		}
 	}
 	function specElemsHide() {
@@ -446,21 +457,63 @@ var PageTransitions = function(prevAnim, nextAnim, $pages, activeClass, setD, se
 			case 'people-around':
 				$('.people-elems div').removeClass('elem-active');
 				break;
+			case 'mdp':
+				$('.mdp-elem').removeClass('elem-active');
+				break;
+			case 'qoobroom':
+				$('.qoobroom-elems div').removeClass('elem-active');
+				break;
 		}
 	}
 
 	init();
 
-	return { init : init, next: next, prev: prev, clickShow: clickShow };
+	return { init: init, next: next, prev: prev, clickShow: clickShow, clickAllow: clickAllow };
 };
 
-var animSlider = PageTransitions(64, 65, $('.slider-item'), 'slider-item-active', true, false);
-var animPrjDesc = PageTransitions(1, 2, $('.prj-desc'), 'prj-desc-active', false, false);
-var animPrjName = PageTransitions(60, 61, $('.prj-name'), 'prj-name-active', false, true);
+$(window).load(function(){
 
-$('.slideshow').on('click', '.slider-dot', function(){
-	var that = $(this);
-	animSlider.clickShow(that.index());
-	animPrjDesc.clickShow(that.index());
-	animPrjName.clickShow(that.index());
+	var animSlider = PageTransitions(64, 65, $('.slider-item'), 'slider-item-active', true, false);
+	var animPrjDesc = PageTransitions(1, 2, $('.prj-desc'), 'prj-desc-active', false, false);
+	var animPrjName = PageTransitions(60, 61, $('.prj-name'), 'prj-name-active', false, true);
+
+	if(autoplay) {
+		setTimeout(function(){
+			goTimeout();
+		}, autoplayTime);
+	}
+
+	function dotClick(that) {
+		if(clickAllow)
+		{
+			animSlider.clickShow(that.index());
+			animPrjDesc.clickShow(that.index());
+			animPrjName.clickShow(that.index());
+			runInterval = false;
+		}
+	}
+
+	function slideNext() {
+		animSlider.next();
+		animPrjDesc.next();
+		animPrjName.next();
+	}
+
+	function goTimeout() {
+		if(runInterval)
+		{
+			slideNext();
+			var timer = setTimeout(goTimeout, autoplayTime);
+		}
+	}
+
+	function startTimeout() {
+		runInterval = true;
+		goTimeout();
+	}
+
+	$('.slideshow').on('click', '.slider-dot', function(){
+		dotClick($(this));
+	});
+
 });
