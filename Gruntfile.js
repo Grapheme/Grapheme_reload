@@ -44,6 +44,13 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
+      less: {
+        files: ['<%= yeoman.app %>/styles/less/**/*.less'], // which files to watch
+        tasks: ['less'],
+        options: {
+          nospawn: true
+        }
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -60,6 +67,19 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      }
+    },
+
+    // Add less compile task
+    less: {
+      development: {
+        options: {
+          compress: false
+        },
+        files: {
+          // target.css file: source.less file
+          '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/less/main.less'
+        }
       }
     },
 
@@ -148,7 +168,7 @@ module.exports = function (grunt) {
     // Add vendor prefixed styles
     autoprefixer: {
       options: {
-        browsers: ['last 1 version']
+        browsers: ['last 2 version', 'ie 8', 'ie 9']
       },
       dist: {
         files: [{
@@ -367,6 +387,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'less',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -381,6 +402,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
+    'less',
     'autoprefixer',
     'connect:test',
     'karma'
@@ -391,6 +413,7 @@ module.exports = function (grunt) {
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
+    'less',
     'autoprefixer',
     'concat',
     'ngAnnotate',
