@@ -23,10 +23,13 @@ a {
 	.transition;
 	color: inherit;
 	text-decoration: none;
-	outline: none;
-	border-bottom: 1px solid;
+	outline: none;	
 
-	&:hover {
-		border-color: transparent;
-	}
+	&.bordered {
+		border-bottom: 1px solid;
+
+		&:hover {
+			border-color: transparent;
+		}
+	}	
 }

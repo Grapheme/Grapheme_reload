@@ -48,7 +48,7 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/styles/less/**/*.less'], // which files to watch
         tasks: ['less'],
         options: {
-          nospawn: true
+          
         }
       },
       styles: {
@@ -134,7 +134,8 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
+        reporter: require('jshint-stylish'),
+        force: true
       },
       all: {
         src: [
