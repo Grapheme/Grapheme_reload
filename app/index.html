@@ -26,46 +26,55 @@
 				<a href="#">Графема</a>
 			</h1>
 			<nav>
-				<ul class="nav-ul">
+				<ul class="nav-ul clearfix">
 					<li class="nav-li">
-						<a href="#">Агенство</a>
+						<a ng-href="#/about">Агенство</a>
 					</li>
 					<li class="nav-li">
-						<a href="#">Работы</a>
+						<a ng-href="#/portfolio">Работы</a>
 					</li>
 					<li class="nav-li">
-						<a href="#">Поддержка</a>
+						<a ng-href="#/support">Поддержка</a>
 					</li>
 					<li class="nav-li">
-						<a href="#">SEO</a>
+						<a ng-href="#/seo">SEO</a>
 					</li>
 					<li class="nav-li">
-						<a href="#">SMM</a>
+						<a ng-href="#/smm">SMM</a>
 					</li>
 					<li class="nav-li">
-						<a href="#">Контакты</a>
+						<a ng-href="#/contacts">Контакты</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
-		<div class="wrapper">
-			<!-- <div class="header">
-				<ul class="nav nav-pills pull-right">
-					<li class="active"><a ng-href="#">Home</a></li>
-					<li><a ng-href="#/about">About</a></li>
-					<li><a ng-href="#/portfolio">Portfolio</a></li>
-					<li><a ng-href="#/contacts">Contact</a></li>
-				</ul>
-				<h3 class="text-muted">grapheme</h3>
-			</div> -->
 
+		<main>
 			<div class="page {{ pageClass }}" ng-view=""></div>
+		</main>
 
-			<div class="footer">
-				<p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+		<footer class="main-footer clearfix">
+			<div class="footer-copy">
+				Digital-агентство ГРАФЕМА, 2014
 			</div>
-		</div>
-
+			<ul class="footer-links">
+				<li class="footer-links-li">
+					<a href="#">RU</a>
+				</li>
+				<li class="footer-links-li">
+					<a href="#">EN</a>
+				</li>
+				<li class="footer-links-li">
+					<a href="mailty:be.digital@grapheme.ru">be.digital@grapheme.ru</a>
+				</li>
+				<li class="footer-links-li">
+					<a href="#">facebook</a>
+				</li>
+				<li class="footer-links-li">
+					<a href="#">#grapheme_ru</a>
+				</li>
+			</ul>
+		</footer>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 		 <script>

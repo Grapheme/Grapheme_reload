@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'FuturaDemiCRegular';
+    src: url('futurademic.eot');
+    src: url('futurademic.eot') format('embedded-opentype'),
+         url('futurademic.woff2') format('woff2'),
+         url('futurademic.woff') format('woff'),
+         url('futurademic.ttf') format('truetype'),
+         url('futurademic.svg#FuturaDemiCRegular') format('svg');
+}

@@ -1,0 +1,23 @@
+.project-list {
+
+	.project-item {
+		overflow: hidden;
+		position: relative;
+		height: 250rem / @hfs;
+
+		&:only-child {
+			height: 500rem / @hfs;
+		}
+
+		.project-cover {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			background: no-repeat center center e('/') cover;
+		}
+	}
+	
+}

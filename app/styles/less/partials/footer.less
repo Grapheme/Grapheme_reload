@@ -1,0 +1,27 @@
+.main-footer {
+	@footerHeight: 141rem / @hfs;
+	height: @footerHeight;
+
+	color: @clr-dGray;
+	font-style: 14em / @hfs;
+	font-family: 'MuseoSansCyrl';
+	font-weight: 300;
+
+	.footer-copy {
+		float: left;
+		margin: 0 0 0 53rem / @hfs;
+		
+		line-height: @footerHeight;		
+	}
+
+	.footer-links {
+		.list-unstyled;
+		float: right;
+		margin: (141 - 14) / @hfs /2rem 29rem / @hfs 0 0;
+
+		.footer-links-li {
+			float: left;
+			margin: 0 24rem / @hfs 0 0;
+		}
+	}
+}

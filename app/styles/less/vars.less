@@ -1,5 +1,5 @@
-@htmlFontSize: 16;
-@footerHeight: 142rem / @htmlFontSize;
+@hfs: 16;
+@footerHeight: 142rem / @hfs;
 
 .transition(@elem: all, @duration: .5s, @effect: ease) {
 	transition: @elem @duration @effect;
@@ -33,3 +33,17 @@ a {
 		}
 	}	
 }
+
+.no-gutter {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+// Colors
+@clr-main: #1fbfac;
+@clr-gray: #3a3a3a;
+@clr-dGray: #333;
+@clr-light-gray: #f5f5f5;
+@clr-mid-gray: #ddd;

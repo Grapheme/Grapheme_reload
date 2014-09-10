@@ -1,0 +1,86 @@
+.intro {
+	padding: 58rem / @hfs 0;
+
+	font-size: 18em / @hfs;
+	font-weight: 300; 
+
+	.intro-left {
+		p {
+			padding-right: 15rem / @hfs;
+		}
+	}
+	.intro-right {
+		p {
+			padding-left: 15rem / @hfs;
+		}
+	}
+}
+
+.skills {
+	.skills-ul {
+		.list-unstyled;
+		margin: 0 0 68rem / @hfs;
+
+		.skills-li {
+			float: left;
+			width: 32%;
+
+			margin: 0 2%;
+
+			&:first-child {
+				margin: 0;
+			}
+			&:last-child {
+				margin: 0;
+			}
+		}
+
+		.skills-li-cont {			
+			min-height: 300rem / @hfs;
+			padding: 0 17rem / @hfs 0;
+			border: 2px solid @clr-main;
+			border-radius: 3px;
+		}
+
+		h3 {
+			position: relative;
+			margin: 32rem / @hfs 0 15rem / @hfs;
+			padding: 0 0 25rem / @hfs;
+			font-size: 22em / @hfs;
+			font-weight: 900;
+			line-height: 26.4 / 22;
+			color: @clr-gray;
+
+			&:after {
+				content: '';
+
+				position: absolute;
+				bottom: 0;
+				left: 0;
+
+				display: block;
+				width: 94rem / @hfs;
+				height: 3rem / @hfs;
+
+				background: @clr-main;
+			}
+		}
+
+		.skills-li-desc {
+			font-size: 1em;
+			line-height: 22.4em / @hfs;
+			font-weight: 300;
+		}
+	}
+	.prods-ul {
+		.list-unstyled;
+	}
+}
+
+.partners {
+
+}
+
+.clients {
+
+}

@@ -1,0 +1,104 @@
+.main-header {
+	@headerHeight: 141rem / @hfs;
+	height: @headerHeight;
+
+	h1 {
+		float: left;
+		margin: 0;
+
+		font-size: 30em / @hfs;
+		line-height: @headerHeight;		
+		color: @clr-main;
+
+		text-transform: uppercase;
+
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			padding: 0 54rem / @hfs;
+			outline: none;
+
+			&:hover {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+nav {
+	float: right;
+	height: 100%;
+
+	font-family: 'MuseoSansCyrl', sans-serif;
+	color: @clr-gray;
+
+	.nav-ul {
+		.list-unstyled;
+		margin: 47rem / @hfs 37rem / @hfs 0;
+	}
+
+	.nav-li {
+		float: left;
+		font-size: 12em / @hfs;
+
+		a {
+			outline: none;
+       		position: relative;
+			display: block;
+       		margin: 0 2px;
+			border: 2px solid transparent;
+
+			padding: 10rem / @hfs 15rem / @hfs;
+			text-transform: uppercase;
+       		overflow: hidden;
+      
+	        &:before {
+	            .box-sizing;         
+	            transform: translateX(100%);
+	            content: '';
+	            position: absolute;
+	            bottom: 0;
+	            left: 0;
+	            width: 100%;
+	            height: 2px;
+	            border-bottom: 2px solid transparent;
+	            border-left: 2px solid transparent;
+	            border-radius: 3px;
+	        }
+      
+	        &:after {
+	            .box-sizing;
+	            transform: translateX(-100%);
+	            content: '';
+	            position: absolute;
+	            top: 0;
+	            left: 0;
+	            width: 100%;
+	            height: 2px;
+	            border-top: 2px solid transparent;
+	            border-right: 2px solid transparent;
+	            border-radius: 3px;
+	        }
+
+			&:hover {
+				color: inherit;
+				text-decoration: none;
+        
+                &:before {
+            		transition: .1s transform linear, .1s height linear .1s;
+            		transform: translateX(0);
+            		height: 100%;
+            		border-color: @clr-main;
+          		}
+          		&:after {
+            		transition: .1s transform linear .2s, .1s height linear .3s;
+            		transform: translateX(0);
+            		height: 100%;
+            		border-color: @clr-main;
+          		}
+			}
+		}
+	}
+}
