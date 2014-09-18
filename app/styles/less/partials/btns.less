@@ -1,0 +1,25 @@
+.btn {
+
+	&.btn--bordered {
+		transition: .4s all ease; 
+		
+		padding: 0 14rem / @hfs;
+
+		border: 2rem / @hfs solid @clr-white;
+		border-radius: 3rem / @hfs;
+
+		font-size: 14em / @hfs;
+		line-height: 39 / 14;
+		color: @clr-white;
+		text-transform: uppercase;
+
+		&:active {
+			position: relative;
+			top: 3px;
+		}
+		&:hover {
+			opacity: .8;
+		}
+	}
+
+}

@@ -7,6 +7,21 @@
 
 		&:only-child {
 			height: 500rem / @hfs;
+
+			.project-head {
+				h2 {
+					margin: 32rem / @hfs 0 18rem / @hfs;
+				}
+			}
+			.project-desc {
+				margin: 0 0 22rem / @hfs;
+			}
+		}
+
+		&:hover {
+			.project-head {
+				opacity: 1;
+			}
 		}
 
 		.project-cover {
@@ -17,6 +32,46 @@
 			height: 100%;
 
 			background: no-repeat center center e('/') cover;
+		}
+	}
+
+	.project-head {
+		transition: .4s all ease;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		z-index: 1;
+
+		padding: 0 24rem / @hfs;
+		color: #fff;
+
+		background: #02c0ac;
+
+		h2 {
+			margin: 1.5rem 0 .725rem;
+
+			font-size: 18em / @hfs;
+			line-height: 22 / 18;
+			font-weight: 300;
+			text-transform: uppercase;
+		}
+
+		.project-desc {
+			margin: 0 0 .775rem;
+			font-size: 30em / @hfs;
+			line-height: 36 / 30;
+			text-transform: uppercase;
+		}
+
+		.project-info {
+			margin: 0 0 30rem / @hfs;
+			font-size: 14em / @hfs;
+			line-height: 19.6 / 14;
+			font-weight: 300;
 		}
 	}
 	

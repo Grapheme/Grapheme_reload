@@ -18,6 +18,11 @@ a.bordered {
 a.bordered:hover {
   border-color: transparent;
 }
+a:focus {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
 .no-gutter [class*="col-"] {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -64,6 +69,23 @@ a.bordered:hover {
   src: url('../fonts/MuseoSansCyrl-900/museosanscyrl-900.eot');
   src: url('../fonts/MuseoSansCyrl-900/museosanscyrl-900.eot') format('embedded-opentype'), url('../fonts/MuseoSansCyrl-900/museosanscyrl-900.woff2') format('woff2'), url('../fonts/MuseoSansCyrl-900/museosanscyrl-900.woff') format('woff'), url('../fonts/MuseoSansCyrl-900/museosanscyrl-900.ttf') format('truetype'), url('../fonts/MuseoSansCyrl-900/museosanscyrl-900.svg#MuseoSansCyrl900') format('svg');
 }
+.btn.btn--bordered {
+  transition: .4s all ease;
+  padding: 0 0.875rem;
+  border: 0.125rem solid #ffffff;
+  border-radius: 0.1875rem;
+  font-size: 0.875em;
+  line-height: 2.78571429;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.btn.btn--bordered:active {
+  position: relative;
+  top: 3px;
+}
+.btn.btn--bordered:hover {
+  opacity: .8;
+}
 .main-header {
   height: 8.8125rem;
 }
@@ -108,7 +130,7 @@ nav .nav-li a {
   display: block;
   margin: 0 2px;
   border: 2px solid transparent;
-  padding: 0.625rem 0.9375rem;
+  padding: 0.625rem 1rem;
   text-transform: uppercase;
   overflow: hidden;
 }
@@ -158,6 +180,7 @@ html,
 body {
   font-size: 16px;
   font-family: 'MuseoSansCyrl', sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 .section {
   width: 61.25rem;
@@ -170,6 +193,11 @@ body {
   font-weight: 100;
   color: #393939;
   text-align: center;
+}
+.section p {
+  font-weight: 300;
+  font-size: 1.125em;
+  line-height: 1.38888889;
 }
 .section.section-gray {
   width: 100%;
@@ -189,6 +217,15 @@ body {
 .project-list .project-item:only-child {
   height: 31.25rem;
 }
+.project-list .project-item:only-child .project-head h2 {
+  margin: 2rem 0 1.125rem;
+}
+.project-list .project-item:only-child .project-desc {
+  margin: 0 0 1.375rem;
+}
+.project-list .project-item:hover .project-head {
+  opacity: 1;
+}
 .project-list .project-item .project-cover {
   position: absolute;
   top: 0;
@@ -196,6 +233,38 @@ body {
   width: 100%;
   height: 100%;
   background: no-repeat center center / cover;
+}
+.project-list .project-head {
+  transition: .4s all ease;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  padding: 0 1.5rem;
+  color: #fff;
+  background: #02c0ac;
+}
+.project-list .project-head h2 {
+  margin: 1.5rem 0 .725rem;
+  font-size: 1.125em;
+  line-height: 1.22222222;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.project-list .project-head .project-desc {
+  margin: 0 0 .775rem;
+  font-size: 1.875em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.project-list .project-head .project-info {
+  margin: 0 0 1.875rem;
+  font-size: 0.875em;
+  line-height: 1.4;
+  font-weight: 300;
 }
 .main-footer {
   height: 8.8125rem;
@@ -219,6 +288,19 @@ body {
 .main-footer .footer-links .footer-links-li {
   float: left;
   margin: 0 1.5rem 0 0;
+}
+.about-head {
+  width: 100%;
+  height: 28rem;
+  padding: 12.5rem 0 0;
+  margin-top: -8.8125rem;
+  background: url(../images/agency.jpg) no-repeat 0 0 / cover;
+}
+.about-head .about-head-desc {
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  color: #ffffff;
 }
 .intro {
   padding: 3.625rem 0;
@@ -259,7 +341,7 @@ body {
   margin: 2rem 0 0.9375rem;
   padding: 0 0 1.5625rem;
   font-size: 1.375em;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.2;
   color: #3a3a3a;
 }
@@ -282,6 +364,123 @@ body {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+.skills .prods-li {
+  position: relative;
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 4.1875rem;
+  padding: 0 0 0 8.75rem;
+}
+.skills .prods-li .prod-li-name {
+  margin: 0 0 1rem;
+  font-size: 1.125em;
+  line-height: .75;
+  font-weight: 700;
+}
+.skills .prods-li .prod-li-desc {
+  font-size: 0.9375em;
+  line-height: 1.4;
+  font-weight: 300;
+}
+.skills .prods-li .prod-li-pict {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 115px;
+  height: 100%;
+  background: no-repeat top right;
+}
+.skills .prods-li .prod-li-pict.sites {
+  background-image: url(../images/prod/01.png);
+}
+.skills .prods-li .prod-li-pict.mapps {
+  background-image: url(../images/prod/02.png);
+}
+.skills .prods-li .prod-li-pict.seo {
+  background-image: url(../images/prod/03.png);
+}
+.skills .prods-li .prod-li-pict.smm {
+  background-image: url(../images/prod/04.png);
+}
+.skills .prods-li .prod-li-pict.ux {
+  background-image: url(../images/prod/05.png);
+}
+.skills .prods-li .prod-li-pict.supp {
+  background-image: url(../images/prod/06.png);
+}
+.skills .prods-li .prod-li-pict.ecomm {
+  background-image: url(../images/prod/07.png);
+}
+.skills .prods-li .prod-li-pict.emailm {
+  background-image: url(../images/prod/08.png);
+}
+.skills .prods-li .prod-li-pict.brand {
+  background-image: url(../images/prod/09.png);
+}
+.skills .prods-li .prod-li-pict.creative {
+  background-image: url(../images/prod/10.png);
+}
+.partners {
+  padding: 0 0 5rem;
+}
+.partners .partners-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin: 2rem 0 0;
+}
+.partners .partners-li {
+  display: inline-block;
+  margin: 0 2.875rem 0 0;
+}
+.partners .partners-li img {
+  vertical-align: sub;
+}
+.clients .clients-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid #dddddd;
+}
+.clients .clients-li {
+  position: relative;
+  height: 12.375rem;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  background: no-repeat center center;
+}
+.clients .clients-li a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.clients .clients-li:nth-child(3n) {
+  border-right: none;
+}
+.clients .clients-li:nth-child(n+4) {
+  border-bottom: none;
+}
+.clients .clients-li.infinity {
+  background-image: url(../images/clients/01.png);
+}
+.clients .clients-li.unilever {
+  background-image: url(../images/clients/02.png);
+}
+.clients .clients-li.rutech {
+  background-image: url(../images/clients/03.png);
+}
+.clients .clients-li.upc {
+  background-image: url(../images/clients/04.png);
+}
+.clients .clients-li.arredamenti {
+  background-image: url(../images/clients/05.png);
+}
+.clients .clients-li.ciml {
+  background-image: url(../images/clients/06.png);
 }
 /* ANIMATIONS
 ============================================================================= */
@@ -343,38 +542,4 @@ body {
   to {
     transform: translateY(0);
   }
-}
-.ng-enter {
-  position: relative;
-  animation: scaleUp 0.5s both ease-in;
-  z-index: 8888;
-}
-.ng-leave {
-  position: relative;
-  animation: slideOutLeft 0.5s both ease-in;
-  z-index: 9999;
-}
-/* page specific animations ------------------------ */
-/* home -------------------------- */
-.page-portfolio.ng-enter {
-  animation: scaleUp 2.5s both ease-in;
-}
-.page-portfolio.ng-leave {
-  transform-origin: 0% 0%;
-  animation: rotateFall 1s both ease-in;
-}
-/* about ------------------------ */
-.page-about.ng-enter {
-  animation: slideInRight 2.5s both ease-in;
-}
-.page-about.ng-leave {
-  animation: slideOutLeft 0.5s both ease-in;
-}
-/* contact ---------------------- */
-.page-contacts.ng-leave {
-  transform-origin: 50% 50%;
-  animation: rotateOutNewspaper 0.5s both ease-in;
-}
-.page-contacts.ng-enter {
-  animation: slideInUp 2.5s both ease-in;
 }

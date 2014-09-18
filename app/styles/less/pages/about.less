@@ -1,3 +1,19 @@
+.about-head {
+	width: 100%;
+	height: 448rem / @hfs;
+	padding: 200rem / @hfs 0 0;
+	margin-top: -141rem / @hfs;
+
+	background: url(../images/agency.jpg) no-repeat 0 0 e('/') cover;
+
+	.about-head-desc {
+		font-size: 30px;
+		line-height: 45px;
+		text-align: center;
+		color: @clr-white;
+	}
+}
+
 .intro {
 	padding: 58rem / @hfs 0;
 
@@ -47,7 +63,7 @@
 			margin: 32rem / @hfs 0 15rem / @hfs;
 			padding: 0 0 25rem / @hfs;
 			font-size: 22em / @hfs;
-			font-weight: 900;
+			font-weight: 700;
 			line-height: 26.4 / 22;
 			color: @clr-gray;
 
@@ -75,12 +91,131 @@
 	.prods-ul {
 		.list-unstyled;
 	}
+	.prods-li {
+		position: relative;
+		float: none;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 67rem / @hfs;
+		padding: 0 0 0 140rem / @hfs;
+
+		.prod-li-name {
+			margin: 0 0 16rem / @hfs;
+
+			font-size: 18em / @hfs;
+			line-height: .75;
+			font-weight: 700;
+		}
+		.prod-li-desc {
+			font-size: 15em / @hfs;
+			line-height: 21 / 15;
+			font-weight: 300;
+		}
+		.prod-li-pict {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 115px;
+			height: 100%;
+
+			background: no-repeat top right;
+
+			&.sites {
+				background-image: url(../images/prod/01.png);	
+			}
+			&.mapps {
+				background-image: url(../images/prod/02.png);
+			}
+			&.seo {
+				background-image: url(../images/prod/03.png);
+			}
+			&.smm {
+				background-image: url(../images/prod/04.png);
+			}
+			&.ux {
+				background-image: url(../images/prod/05.png);
+			}
+			&.supp {
+				background-image: url(../images/prod/06.png);
+			}
+			&.ecomm {
+				background-image: url(../images/prod/07.png);
+			}
+			&.emailm {
+				background-image: url(../images/prod/08.png);
+			}
+			&.brand {
+				background-image: url(../images/prod/09.png);
+			}
+			&.creative {
+				background-image: url(../images/prod/10.png);
+			}
+
+		}
+	}
 }
 
 .partners {
+	padding: 0 0 80rem / @hfs;
 
+	.partners-ul {
+		.list-unstyled;
+		margin: 2rem 0 0;
+	}
+	.partners-li {
+		display: inline-block;
+		margin: 0 46rem / @hfs 0 0;
+
+		img {
+			vertical-align: sub;
+		}
+	}
 }
 
 .clients {
+	.clients-ul {
+		.list-unstyled;
+		border-top: 1px solid @clr-mid-gray;		
+	}
+	.clients-li {
+		position: relative;
+		height: 198rem / @hfs;
+		border-right: 1px solid @clr-mid-gray;
+		border-bottom: 1px solid @clr-mid-gray;
+		background: no-repeat center center;
 
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		&:nth-child(3n) {
+			border-right: none;
+		}
+		&:nth-child(n+4) {
+			border-bottom: none;
+		}
+
+		&.infinity {
+			background-image: url(../images/clients/01.png);
+		}
+		&.unilever {
+			background-image: url(../images/clients/02.png);
+		}
+		&.rutech {
+			background-image: url(../images/clients/03.png);
+		}
+		&.upc {
+			background-image: url(../images/clients/04.png);
+		}
+		&.arredamenti {
+			background-image: url(../images/clients/05.png);
+		}
+		&.ciml {
+			background-image: url(../images/clients/06.png);		
+		}
+	}
 }

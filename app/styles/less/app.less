@@ -1,6 +1,7 @@
 html, body {
 	font-size: 16px;
 	font-family: 'MuseoSansCyrl', sans-serif;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 .section {
@@ -15,6 +16,12 @@ html, body {
 		font-weight: 100;
 		color: #393939;
 		text-align: center;
+	}
+
+	p {
+		font-weight: 300;
+		font-size: 18em / @hfs;
+		line-height: 25 / 18;
 	}
 
 	&.section-gray {
